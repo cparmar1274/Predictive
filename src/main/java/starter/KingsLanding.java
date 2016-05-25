@@ -1,4 +1,4 @@
-package start;
+package starter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author chiragparmar, @date 24/05/16 10:40 AM
  */
 @Controller
-public class Library {
+public class KingsLanding {
 	
 	@RequestMapping("/home")
-	public String getValue(Model model) {
+	public String getLandingPage(Model model) {
 		return "landing";
 	}
+	
+	@RequestMapping("/login")
+	public String getLogin(Model model){
+		return "login";
+	}
+	
 
 }

@@ -12,16 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class Library {
-	public boolean someLibraryMethod() {
-		return true;
-	}
-
-	private static Integer visitedTimes = 0;
-
+	
 	@RequestMapping("/home")
 	public String getValue(Model model) {
-		Library.visitedTimes++;
-		model.addAttribute("visited", String.valueOf(Library.visitedTimes));
 		return "landing";
 	}
 

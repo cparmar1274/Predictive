@@ -15,7 +15,7 @@ public class KingsLanding {
 	
 	@RequestMapping("/home")
 	public String getLandingPage(Model model) {
-		return "/bootstrap/index";
+		return "//bootstrap//index";
 	}
 	
 	@RequestMapping("/login")

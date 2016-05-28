@@ -16,46 +16,20 @@
 	  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-
-	<!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top"  onclick = '$("#menu-close").click();'>Start Bootstrap</a>
-            </li>
-            <li>
-                <a href="#top" onclick = '$("#menu-close").click();' >Home</a>
-            </li>
-            <li>
-                <a href="#about" onclick = '$("#menu-close").click();' >About</a>
-            </li>
-            <li>
-                <a href="#services" onclick = '$("#menu-close").click();' >Services</a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick = '$("#menu-close").click();' >Portfolio</a>
-            </li>
-            <li>
-                <a href="#contact" onclick = '$("#menu-close").click();' >Contact</a>
-            </li>
-        </ul>
-    </nav>
-
+<div class="container">
+  <div class="row">
+    <span class="pull-right"><div class="text-right g-signin2" data-onsuccess="onSignIn"></div></span>
+  </div>
+</div>
+ 
    <!-- Header -->
     <header id="topPage" class="header">
 		<div class="text-vertical-center">
             <h1>Mammoth Inc.</h1>
             <h3>Location Analytics Tool</h3>
-            <br/>
-            <div class="row">
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div>
         </div>
     </header>
-    
+ 
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -77,10 +51,20 @@
         </div>
     </footer>
 
+	
 	<script src="https://apis.google.com/js/platform.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+    function onSignIn(googleUser) {
+    	  var profile = googleUser.getBasicProfile();
+    	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    	  console.log('Name: ' + profile.getName());
+    	  console.log('Image URL: ' + profile.getImageUrl());
+    	  console.log('Email: ' + profile.getEmail());
+    	}
+    </script>
 </body>
 </html>

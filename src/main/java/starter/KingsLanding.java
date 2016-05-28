@@ -18,11 +18,8 @@ public class KingsLanding {
 		return "bootstrap/index";
 	}
 	
-	@RequestMapping("/login")
-	public String getLogin(Model model){
-		return "landing"; 
-		
+	@RequestMapping("/")
+	public String getLandingPage(Model model){
+		return "landing";
 	}
-	
-
 }

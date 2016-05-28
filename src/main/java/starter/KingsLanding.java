@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class KingsLanding {
 	
 	@RequestMapping("/home")
-	public String getLandingPage(Model model) {
+	public String getApplicationPage(Model model) {
 		return "bootstrap/index";
 	}
 	

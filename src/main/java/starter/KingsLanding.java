@@ -20,7 +20,7 @@ public class KingsLanding {
 	
 	@RequestMapping("/login")
 	public String getLogin(Model model){
-		return "/landing"; 
+		return "landing"; 
 		
 	}
 	

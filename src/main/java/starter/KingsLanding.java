@@ -1,12 +1,7 @@
 package starter;
 
-import java.lang.invoke.MethodType;
-import java.util.Map;
-
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +27,7 @@ public class KingsLanding {
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public @ResponseBody Map<String,Object> goLogin(@RequestBody Map<String,Object> params){
-		return params;
+	public @ResponseBody String goLogin(WebRequest request){
+		return request.getParameterMap().toString();
 	}
 }

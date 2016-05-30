@@ -1,7 +1,12 @@
 package interfaces;
 
+import mannyobjects.Location;
+import mannyobjects.UserProfile;
+
 public interface IAnalyticsEngine {
 
-	public boolean IsReady();
+	boolean buildUserMatrix();
+
+	Location getCurrentLocation(UserProfile userProfile);
 	
 }

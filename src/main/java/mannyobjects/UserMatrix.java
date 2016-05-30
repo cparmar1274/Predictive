@@ -1,28 +1,13 @@
 package mannyobjects;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class UserMatrix {
 
-	private UserProfile userName;
-	private Address address;
+	private UUID userMatrixId;
 	private Map<Integer, Location> userLocations;
-
-	public UserProfile getUserName() {
-		return userName;
-	}
-
-	public void setUserName(UserProfile userName) {
-		this.userName = userName;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+	private Location currentLocation;
 
 	public Map<Integer, Location> getUserLocations() {
 		return userLocations;
@@ -31,5 +16,23 @@ public class UserMatrix {
 	public void setUserLocations(Map<Integer, Location> userLocations) {
 		this.userLocations = userLocations;
 	}
+
+	public Location getCurrentLocation() {
+		return currentLocation;
+	}
+
+	public UUID getUserMatrixId() {
+		return userMatrixId;
+	}
+
+	public void setUserMatrixId(UUID userMatrixId) {
+		this.userMatrixId = userMatrixId;
+	}
+
+	public void setCurrentLocation(Location currentLocation) {
+		this.currentLocation = currentLocation;
+	}
+	
+	
 
 }

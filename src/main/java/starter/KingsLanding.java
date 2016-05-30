@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,13 +28,13 @@ public class KingsLanding {
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public ModelAndView goLogin(WebRequest request){
-		return new ModelAndView("bootstrap/index");
+	public @ResponseBody String goLogin(WebRequest request){
+		return "Login Success for "+request.getParameter("name");
 	}
 	
 	@RequestMapping("/logout")
-	public ModelAndView goLogout(WebRequest request){
-		return new ModelAndView("landing");
+	public @ResponseBody String goLogout(WebRequest request){
+		return "Logout success";
 	}
 	
 	

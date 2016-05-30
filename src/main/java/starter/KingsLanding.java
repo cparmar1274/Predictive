@@ -27,12 +27,12 @@ public class KingsLanding {
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public String goLogin(WebRequest request){
-		return "bootstrap/index";
+		return "redirect:bootstrap/index";
 	}
 	
 	@RequestMapping("/logout")
 	public String goLogout(WebRequest request){
-		return "landing";
+		return "redirect:landing";
 	}
 	
 	

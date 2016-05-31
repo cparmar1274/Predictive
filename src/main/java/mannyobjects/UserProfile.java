@@ -40,6 +40,16 @@ public class UserProfile {
 	public void setUserMatrix(UserMatrix userMatrix) {
 		this.userMatrix = userMatrix;
 	}
+
+	
+	/*Created on demand*/
+	public Location getCurrentLocation() {
+		return this.getUserMatrix().getCurrentLocation();
+	}
+	/*Created on demand*/
+	public String getMessage() {
+		return this.getUserMatrix().getCurrentLocation().getMessage();
+	}
 	
 	
 

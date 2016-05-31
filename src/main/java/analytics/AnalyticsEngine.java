@@ -8,11 +8,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import mannyobjects.Location;
 import mannyobjects.UserMatrix;
 import mannyobjects.UserProfile;
 
+@Service
 public class AnalyticsEngine implements IAnalyticsEngine {
+
+	public AnalyticsEngine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean buildUserMatrix() {
 		List<UserProfile> users = new ArrayList<UserProfile>();
@@ -41,17 +49,18 @@ public class AnalyticsEngine implements IAnalyticsEngine {
 	private static void updateCurrentLocation(UserProfile userProfile) {
 		List<Location> locations = AnalyticsEngine.getLocations(userProfile
 				.getUserId());
-		
-		//analyze locations and fill up userLocations map
-		
-		Map<Integer,Location> userLocations = new HashMap<Integer, Location>();
-		userLocations.put(1, new Location()); // user locatoin at 1 o'clock
-		userLocations.put(2, new Location()); // user locatoin at 2 o'clock
-		
-		
+
+		// analyze locations and fill up userLocations map
+
+		Map<Integer, Location> userLocations = new HashMap<Integer, Location>();
+
+		for (int i = 0; i < 24; i++)
+			userLocations.put(i, new Location()); // user location at each hour
+													// of day
+
 		// fetch user location at 1 to 24 o'clock
 		userProfile.getUserMatrix().setUserLocations(userLocations);
-		
+
 	}
 
 	// fetch users' historic locations

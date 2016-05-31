@@ -10,6 +10,7 @@ public class Location {
 	private Date time;
 	private String location;
 	private UUID userId;
+	private String message;
 
 	public double getLat() {
 		return lat;
@@ -47,6 +48,15 @@ public class Location {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 	
 
 }

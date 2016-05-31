@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import mannyobjects.Address;
 import mannyobjects.Location;
 import mannyobjects.UserProfile;
 
@@ -33,8 +34,8 @@ public class KingsLanding {
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
 
-	@Autowired(required=true)
-	public KingsLanding(AnalyticsEngine analyticsEngine,UserEngine userEngine) {
+	@Autowired(required = true)
+	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine) {
 		super();
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
@@ -62,6 +63,7 @@ public class KingsLanding {
 		return "Logout success";
 	}
 
+	/* User Locations Prediction Service */
 	@RequestMapping(value = "/predict", method = RequestMethod.PUT)
 	public @ResponseBody
 	Map<String, Object> proivdePredictionAboutUserLocation(WebRequest request) {
@@ -74,6 +76,77 @@ public class KingsLanding {
 			data.put("current_location", locaiton);
 			data.put("most_recent_location", userProfile.getCurrentLocation());
 			data.put("message", userProfile.getMessage());
+		} catch (Exception e) {
+			data.put("locatoin", "");
+			data.put("message",
+					"Error while providing user location. Please try later");
+		}
+		return data;
+	}
+
+	/* User Management */
+	@RequestMapping(value = "/getuser", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String, Object> getUser(WebRequest request) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		try {
+			data.put("most_recent_location", "");
+		} catch (Exception e) {
+			data.put("locatoin", "");
+			data.put("message",
+					"Error while providing user location. Please try later");
+		}
+		return data;
+	}
+
+	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String, Object> createUser(WebRequest request) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		try {
+
+			String userName = request.getParameter("userName");
+			Address address = new Address();
+			userEngine.createUser(userName, address);
+
+			data.put("most_recent_location", "");
+		} catch (Exception e) {
+			data.put("locatoin", "");
+			data.put("message",
+					"Error while providing user location. Please try later");
+		}
+		return data;
+	}
+
+	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String, Object> updateUser(WebRequest request) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		try {
+
+			String userId = request.getParameter("userId");
+			UserProfile user = userEngine.getUser(UUID.fromString(userId));
+			userEngine.updateUser(user, UUID.fromString(userId));
+
+			data.put("most_recent_location", "");
+		} catch (Exception e) {
+			data.put("locatoin", "");
+			data.put("message",
+					"Error while providing user location. Please try later");
+		}
+		return data;
+	}
+
+	@RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String, Object> deleteUser(WebRequest request) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		try {
+
+			String userId = request.getParameter("userId");
+			userEngine.deleteUser(UUID.fromString(userId));
+
+			data.put("most_recent_location", "");
 		} catch (Exception e) {
 			data.put("locatoin", "");
 			data.put("message",

@@ -1,163 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Mammoth Inc. - Location Analytics Tool</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="google-signin-client_id" content="410485773364-6hetnmeupu48i1879i67felgfsku4r67.apps.googleusercontent.com"/>
-	  <!-- Bootstrap Core CSS -->
-	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-	 
-	  <!-- Custom CSS -->
-	  <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-stylish-portfolio/1.0.4/css/stylish-portfolio.min.css" rel="stylesheet"/>
-	
-	  <!-- Custom Fonts -->
-	  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-</head>
-<body>
-
- 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Mammoth Inc.</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Service<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Realtime Location Analytics</a></li>
-            <li><a href="#">Content Analytics</a></li>
-            <li><a href="#">Custom Analytics</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> User Details<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Connections</a></li>
-          </ul>
-        </li>  
-       
-        <li> 
-         <a href="#" onclick="signOut();"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
-	<script>
-	 function signOut() {
-	   var auth2 = gapi.auth2.getAuthInstance();
-	   auth2.signOut().then(function () {
-	     window.location = "/";
-	   });
-	 }
-	</script>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<div class="container">
-      <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <A href="edit.html" >Edit Profile</A>
-
-        <A href="edit.html" >Logout</A>
-       <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
-      </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-   
-   
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+   <head>
+      <title>Mammoth Inc. - Location Analytics Tool</title>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="google-signin-client_id" content="410485773364-6hetnmeupu48i1879i67felgfsku4r67.apps.googleusercontent.com"/>
+      <!-- Bootstrap Core CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+      <!-- Custom CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-stylish-portfolio/1.0.4/css/stylish-portfolio.min.css" rel="stylesheet"/>
+      <!-- Custom Fonts -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+      <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                        
+               </button>
+               <a class="navbar-brand" href="#">Mammoth Inc.</a>
             </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Department:</td>
-                        <td>Programming</td>
-                      </tr>
-                      <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
-                      </tr>
-                      <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
-                      </tr>
-                   
-                         <tr>
-                             <tr>
-                        <td>Gender</td>
-                        <td>Male</td>
-                      </tr>
-                        <tr>
-                        <td>Home Address</td>
-                        <td>Metro Manila,Philippines</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
-                      </tr>
-                        <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                        </td>
-                           
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-                  
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+            <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Service<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Realtime Location Analytics</a></li>
+                        <li><a href="#">Content Analytics</a></li>
+                        <li><a href="#">Custom Analytics</a></li>
+                     </ul>
+                  </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> User Details<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Connections</a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#" onclick="signOut();"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
+                     <script>
+                        function signOut() {
+                          var auth2 = gapi.auth2.getAuthInstance();
+                          auth2.signOut().then(function () {
+                            window.location = "/";
+                          });
+                        }
+                     </script>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+               <A href="edit.html" >Edit Profile</A>
+               <A href="edit.html" >Logout</A>
+               <br/>
+               <p class=" text-info">May 05,2014,03:00 pm </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+               <div class="panel panel-info">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+                  </div>
+                  <div class="panel-body">
+                     <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"/> </div>
+                        <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                           <dl>
+                             <dt>DEPARTMENT:</dt>
+                             <dd>Administrator</dd>
+                             <dt>HIRE DATE</dt>
+                             <dd>11/12/2013</dd>
+                             <dt>DATE OF BIRTH</dt>
+                                <dd>11/12/2013</dd>
+                             <dt>GENDER</dt>
+                             <dd>Male</dd>
+                           </dl>
+                           </div>-->
+                        <div class=" col-md-9 col-lg-9 ">
+                           <table class="table table-user-information">
+                              <tbody>
+                                 <tr>
+                                    <td>Department:</td>
+                                    <td>Programming</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Hire date:</td>
+                                    <td>06/23/2013</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Date of Birth</td>
+                                    <td>01/24/1988</td>
+                                 </tr>
+                                 <tr>
+                                 <tr>
+                                    <td>Gender</td>
+                                    <td>Male</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Home Address</td>
+                                    <td>Metro Manila,Philippines</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Email</td>
+                                    <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                 </tr>
+                                 <td>Phone Number</td>
+                                 <td>123-4567-890(Landline)<br/><br/>555-4567-890(Mobile)
+                                 </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <a href="#" class="btn btn-primary">My Sales Performance</a>
+                           <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="panel-footer">
+                     <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                     <span class="pull-right">
+                     <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                     <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Mammoth Inc.</strong></h4>
+                    <p>Fredericton, New Brunswick <br/> Canada</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (506) 259-8307</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:chirag-parmar@live.com">chirag-parmar@live.com</a></li>
+                    </ul>
+                    <br/>
+                    
+                    <hr class="small"/>
+                    <p class="text-muted">Chirag Parmar Initiative.</p>
                 </div>
-              </div>
             </div>
-                 <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                    </div>
-            
-          </div>
         </div>
-      </div>
-    </div>
-
- 
-</body>
+    </footer>
+   </body>
 </html>

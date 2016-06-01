@@ -45,6 +45,11 @@ public class KingsLanding {
 	public String getApplicationPage(Model model) {
 		return "bootstrap/index";
 	}
+	
+	@RequestMapping("/profile")
+	public String getUsreProfile(Model model) {
+		return "bootstrap/user";
+	}
 
 	@RequestMapping("/")
 	public String getLandingPage(Model model) {

@@ -47,17 +47,15 @@ public class AnalyticsEngine implements IAnalyticsEngine {
 
 	// build logic to make best guess of user's current location
 	private static void updateCurrentLocation(UserProfile userProfile) {
-		List<Location> locations = AnalyticsEngine.getLocations(userProfile
-				.getUserId());
+		List<Location> locations = AnalyticsEngine.getLocations(userProfile.getUserId());
 
 		// analyze locations and fill up userLocations map
-
 		Map<Integer, Location> userLocations = new HashMap<Integer, Location>();
 
 		for (int i = 0; i < 24; i++)
 			userLocations.put(i, new Location()); // user location at each hour
-													// of day
-
+		// of day
+		
 		// fetch user location at 1 to 24 o'clock
 		userProfile.getUserMatrix().setUserLocations(userLocations);
 

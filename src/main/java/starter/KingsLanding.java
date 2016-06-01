@@ -81,7 +81,7 @@ public class KingsLanding {
 	}
 
 	/* User Locations Prediction Service */
-	@RequestMapping(value = "/predict", method = RequestMethod.PUT)
+	@RequestMapping(value = "/predict", method = RequestMethod.POST)
 	public @ResponseBody
 	Map<String, Object> proivdePredictionAboutUserLocation(WebRequest request) {
 		Map<String, Object> data = new HashMap<String, Object>();

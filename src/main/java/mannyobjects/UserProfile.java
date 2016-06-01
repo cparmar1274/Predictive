@@ -5,6 +5,8 @@ import java.util.UUID;
 public class UserProfile {
 
 	private String userName;
+	private String email;
+	private String imageUrl;
 	private UUID userId;
 	private Address address;
 	private UserMatrix userMatrix;
@@ -40,8 +42,26 @@ public class UserProfile {
 	public void setUserMatrix(UserMatrix userMatrix) {
 		this.userMatrix = userMatrix;
 	}
+	
+	
 
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	/*Created on demand*/
 	public Location getCurrentLocation() {
 		return this.getUserMatrix().getCurrentLocation();

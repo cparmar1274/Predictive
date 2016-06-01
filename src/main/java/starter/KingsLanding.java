@@ -59,6 +59,18 @@ public class KingsLanding {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
 	String goLogin(WebRequest request) {
+		
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String imageUrl = request.getParameter("imageUrl");
+		
+		
+		UserProfile userProfile = new UserProfile();
+		userProfile.setUserName(name);
+		userProfile.setUserId(UUID.randomUUID());
+		userProfile.setEmail(email);
+		userProfile.setImageUrl(imageUrl);
+		
 		return "Login Success for " + request.getParameter("name");
 	}
 

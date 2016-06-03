@@ -12,6 +12,7 @@ import mannyobjects.Location;
 import mannyobjects.UserProfile;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ import authentications.UserEngine;
  * @author chiragparmar, @date 24/05/16 10:40 AM
  */
 @Controller
-public class KingsLanding {
+public class KingsLanding implements ErrorController{
 
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
@@ -39,6 +40,11 @@ public class KingsLanding {
 		super();
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
+	}
+	
+	@RequestMapping("/error")
+	public String getErrorPage(Model model) {
+		return "error";
 	}
 
 	@RequestMapping("/home")
@@ -54,6 +60,11 @@ public class KingsLanding {
 	@RequestMapping("/")
 	public String getLandingPage(Model model) {
 		return "landing";
+	}
+	
+	@RequestMapping("/predict")
+	public String getPrerict(Model model){
+		return "bootstrap/predict";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -79,6 +90,8 @@ public class KingsLanding {
 	String goLogout(WebRequest request) {
 		return "Logout success";
 	}
+	
+	
 
 	/* User Locations Prediction Service */
 	@RequestMapping(value = "/predict", method = RequestMethod.POST)
@@ -170,6 +183,23 @@ public class KingsLanding {
 					"Error while providing user location. Please try later");
 		}
 		return data;
+	}
+	
+	@RequestMapping(value = "/broadcast", method = RequestMethod.POST)
+	public @ResponseBody
+	String broadcastMyLocation(WebRequest request) {
+		
+		String lat = request.getParameter("lat");
+		String lon = request.getParameter("lon");
+		
+		//update your location to everyone else
+		
+		return "Broadcast successful.";
+	}
+
+	
+	public String getErrorPath() {
+		return "/error";
 	}
 
 }

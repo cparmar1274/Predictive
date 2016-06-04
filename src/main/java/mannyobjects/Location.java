@@ -3,13 +3,26 @@ package mannyobjects;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Location {
 
+	@Id
+	private Long Id;
+	@Column
 	private double lat;
+	@Column
 	private double lon;
+	@Column
 	private Date time;
+	@Column
 	private String location;
+	@Column
 	private UUID userId;
+	@Column
 	private String message;
 
 	public double getLat() {
@@ -55,6 +68,18 @@ public class Location {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	

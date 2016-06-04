@@ -2,15 +2,39 @@ package mannyobjects;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
 public class UserProfile {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long Id;
+	@Column
 	private String userName;
+	@Column
 	private String email;
+	@Column
 	private String imageUrl;
+	@Column
 	private UUID userId;
+
+	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+	@PrimaryKeyJoinColumn
 	private Address address;
+
+	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+	@PrimaryKeyJoinColumn
 	private UserMatrix userMatrix;
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -42,10 +66,7 @@ public class UserProfile {
 	public void setUserMatrix(UserMatrix userMatrix) {
 		this.userMatrix = userMatrix;
 	}
-	
-	
 
-	
 	public String getEmail() {
 		return email;
 	}
@@ -61,16 +82,25 @@ public class UserProfile {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+	
 
-	/*Created on demand*/
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	/* Created on demand */
 	public Location getCurrentLocation() {
 		return this.getUserMatrix().getCurrentLocation();
 	}
-	/*Created on demand*/
+
+	/* Created on demand */
 	public String getMessage() {
 		return this.getUserMatrix().getCurrentLocation().getMessage();
 	}
-	
-	
 
 }

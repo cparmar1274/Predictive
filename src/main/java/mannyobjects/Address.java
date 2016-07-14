@@ -21,6 +21,7 @@ public class Address {
 	private String zipCode;
 	@Column
 	private String contactNo;
+	
 	public Long getId() {
 		return Id;
 	}

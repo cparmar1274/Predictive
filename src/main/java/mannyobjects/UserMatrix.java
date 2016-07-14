@@ -19,6 +19,7 @@ public class UserMatrix {
 	
 	@Column
 	private UUID userMatrixId;
+	
 	private Map<Integer, Location> userLocations;
 	
 	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)

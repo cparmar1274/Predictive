@@ -50,6 +50,16 @@ public class KingsLanding implements ErrorController{
 
 	@RequestMapping("/home")
 	public String getApplicationPage(Model model) {
+		
+		Address address = new Address();
+		address.setAptNo("2");
+		address.setStreetName("623 Windsor St");
+		address.setCity("Fredericton");
+		address.setContactNo("506-259-8307");
+		address.setState("NB");
+		address.setZipCode("E3B 4G3");
+		address.save(address);
+				
 		return "bootstrap/index";
 	}
 	

@@ -1,16 +1,21 @@
 package mannyobjects;
 
+import interfaces.ICRUDOperations;
+
 import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Location {
+public class Location implements ICRUDOperations<Location> {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;
 	@Column
 	private double lat;
@@ -80,6 +85,26 @@ public class Location {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public void save(Location saveMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(Location updateMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insert(Location insertMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(Location deleteMe) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

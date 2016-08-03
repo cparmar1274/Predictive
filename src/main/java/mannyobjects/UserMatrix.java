@@ -1,5 +1,7 @@
 package mannyobjects;
 
+import interfaces.ICRUDOperations;
+
 import java.util.Map;
 import java.util.UUID;
 
@@ -7,14 +9,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-public class UserMatrix {
+public class UserMatrix implements ICRUDOperations<UserMatrix> {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;
 	
 	@Column
@@ -56,6 +61,26 @@ public class UserMatrix {
 
 	public void setId(Long id) {
 		Id = id;
+	}
+
+	public void save(UserMatrix saveMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(UserMatrix updateMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insert(UserMatrix insertMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(UserMatrix deleteMe) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -1,0 +1,19 @@
+{
+  "name": "predictive",
+  "version": "1.0.0",
+  "description": "Analytice Portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cparmar1274/Predictive.git"
+  },
+  "author": "Chirag Parmar (chirag-parmar@live.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cparmar1274/Predictive/issues"
+  },
+  "homepage": "https://github.com/cparmar1274/Predictive#readme"
+}

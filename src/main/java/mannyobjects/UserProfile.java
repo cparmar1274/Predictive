@@ -1,5 +1,7 @@
 package mannyobjects;
 
+import interfaces.ICRUDOperations;
+
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -13,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-public class UserProfile {
+public class UserProfile implements ICRUDOperations<UserProfile> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -101,6 +103,26 @@ public class UserProfile {
 	/* Created on demand */
 	public String getMessage() {
 		return this.getUserMatrix().getCurrentLocation().getMessage();
+	}
+
+	public void save(UserProfile saveMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(UserProfile updateMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void insert(UserProfile insertMe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(UserProfile deleteMe) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

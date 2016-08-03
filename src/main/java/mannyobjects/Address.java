@@ -1,13 +1,18 @@
 package mannyobjects;
 
+import interfaces.ICRUDOperations;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Address {
+public class Address implements ICRUDOperations<Address> {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;
 	@Column
 	private String aptNo;
@@ -63,6 +68,23 @@ public class Address {
 	}
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
+	}
+	
+	public void save(Address saveMe) {
+		// Write Save Me code
+		
+	}
+	public void update(Address updateMe) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void insert(Address insertMe) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void delete(Address deleteMe) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

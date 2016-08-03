@@ -1,20 +1,20 @@
 package authentications;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class DBConnection {
 
-	public DBConnection() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public static DBConnection dbConnection = null;
 
 	public static boolean connectDatabase() {
-		return true;
+		return dbConnection!=null;
 	}
 
 	public static boolean getConnection() {
+		if(dbConnection==null){
+			dbConnection = new DBConnection();
+		}
 		return true;
 	}
 

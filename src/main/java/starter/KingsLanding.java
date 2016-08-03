@@ -31,7 +31,6 @@ import authentications.UserEngine;
  * @author chiragparmar, @date 24/05/16 10:40 AM
  */
 @Controller
-@RequestMapping("/base")
 public class KingsLanding implements ErrorController{
 
 	private IUserEngine userEngine = null;

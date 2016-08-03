@@ -31,6 +31,7 @@ import authentications.UserEngine;
  * @author chiragparmar, @date 24/05/16 10:40 AM
  */
 @Controller
+@RequestMapping("/base")
 public class KingsLanding implements ErrorController{
 
 	private IUserEngine userEngine = null;
@@ -43,11 +44,6 @@ public class KingsLanding implements ErrorController{
 		this.analyticsEngine = analyticsEngine;
 	}
 	
-	@RequestMapping("/error")
-	public String getErrorPage(Model model) {
-		return "error";
-	}
-
 	@RequestMapping("/home")
 	public String getApplicationPage(Model model) {
 		
@@ -60,12 +56,12 @@ public class KingsLanding implements ErrorController{
 		address.setZipCode("E3B 4G3");
 		address.save(address);
 				
-		return "bootstrap/index";
+		return "index";
 	}
 	
 	@RequestMapping("/profile")
 	public String getUsreProfile(Model model) {
-		return "bootstrap/user";
+		return "user";
 	}
 
 	@RequestMapping("/")
@@ -75,7 +71,7 @@ public class KingsLanding implements ErrorController{
 	
 	@RequestMapping("/predict")
 	public String getPrerict(Model model){
-		return "bootstrap/predict";
+		return "predict";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -211,9 +207,10 @@ public class KingsLanding implements ErrorController{
 		return "Broadcast successful.";
 	}
 
-	
 	public String getErrorPath() {
-		return "/error";
+		return "error";
 	}
+
+	
 
 }

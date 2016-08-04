@@ -11,93 +11,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class IndexUtility {
-
-	public static final String ALPHABET_KEY = "ALPHABET";
-	public static final String ALPHABET_STRING = "#,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,,R,S,T,U,V,W,X,Y,Z";
-	public static final List<String> ALPHABET_VALUES = Arrays.asList(ALPHABET_STRING.split(","));
-
-	public static final String ROMAN_KEY = "ROMAN";
-	public static final String ROMAN_STRING = "#,I,II,III,IV,V,VI,VII,VIII,IX,X";
-	public static final List<String> ROMAN_VALUES = Arrays.asList(ROMAN_STRING.split(","));
-
-	public static final String NUMERIC_KEY = "NUMERIC";
-
-	public static String getStartsWith(String type) {
-
-		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 2"))
-			return ALPHABET_KEY;
-
-		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 3"))
-			return ROMAN_KEY;
-
-		return NUMERIC_KEY;
-	}
-
-	public static Integer getWeight(String type) {
-		if (!type.isEmpty() && type.toUpperCase().contains("HEADING"))
-			return Integer.parseInt(type.toUpperCase()
-					.replaceAll("HEADING", "").trim());
-
-		return 1;
-	}
-
-	public static String getTabbing(String type) {
-
-		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 2"))
-			return "\t";
-
-		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 3"))
-			return "\t\t";
-
-		return "";
-	}
-}
-
-class Node {
-	
-	public Heading heading;
-	public List<Node> children;
-	
-	public Node(){
-	    this.heading = new Heading("", "");
-	    this.children = new ArrayList<Node>();
-	}
-	
-	public Node(Heading heading) {
-		super();
-		this.heading = heading;
-		this.children = new ArrayList<Node>();
-	}
-
-	public Heading getHeading() {
-		return heading;
-	}
-
-	public void setHeading(Heading heading) {
-		this.heading = heading;
-	}
-
-	public List<Node> getChildren() {
-		return children;
-	}
-
-	public void addChildren(Node child) {
-		this.children.add(child);
-	}
-}
-
 class Heading {
+	
+	public String text;
+	public Integer weight;
 	public String type;
-	public String value;
-	public Integer index;
 	public String startsWith;
 
 	public Heading(String type, String value) {
 		super();
 		this.type = type;
-		this.value = value;
-		this.index = 1;
+		this.text = value;
+		this.weight = 1;
 		this.startsWith = IndexUtility.getStartsWith(type);
 	}
 
@@ -107,13 +32,13 @@ class Heading {
 
 		switch (this.startsWith) {
 		case IndexUtility.ALPHABET_KEY:
-			currentIndex = IndexUtility.ALPHABET_VALUES.get(this.index);
+			currentIndex = IndexUtility.ALPHABET_VALUES.get(this.weight);
 			break;
 		case IndexUtility.ROMAN_KEY:
-			currentIndex = IndexUtility.ROMAN_VALUES.get(this.index);
+			currentIndex = IndexUtility.ROMAN_VALUES.get(this.weight);
 			break;
 		default:
-			currentIndex = this.index;
+			currentIndex = this.weight;
 			break;
 		}
 
@@ -122,7 +47,7 @@ class Heading {
 
 	@Override
 	public String toString() {
-		return "[ " + this.type + " - " + this.value + " - " + this.index+ " - " + this.startsWith + " - " + this.getCurrentIndex()+ " ]";
+		return "[ " + this.type + " - " + this.text + " - " + this.weight+ " - " + this.startsWith + " - " + this.getCurrentIndex()+ " ]";
 	}
 
 }
@@ -164,7 +89,7 @@ class DocumentParserEngine {
 			}
 			
 			Heading displayObject = new Heading(lineSplit[0].trim(), value);
-			displayObject.index = weightedDocs.get(key);
+			displayObject.weight = weightedDocs.get(key);
 			readyToDisplay.add(displayObject);
 			preKey = key;
 		}
@@ -181,11 +106,53 @@ public class Document {
 			DocumentParserEngine docEngine = new DocumentParserEngine(filePath);
 			List<Heading> parsedDocument = docEngine.generateParsedDocument();
 			for (Heading docObj : parsedDocument) {
-				System.out.println(IndexUtility.getTabbing(docObj.type)	+ docObj.getCurrentIndex() + ". " + docObj.value);
+				System.out.println(IndexUtility.getTabbing(docObj.type)	+ docObj.getCurrentIndex() + ". " + docObj.text);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+}
+class IndexUtility {
+
+	public static final String ALPHABET_KEY = "ALPHABET";
+	public static final String ALPHABET_STRING = "#,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,,R,S,T,U,V,W,X,Y,Z";
+	public static final List<String> ALPHABET_VALUES = Arrays.asList(ALPHABET_STRING.split(","));
+
+	public static final String ROMAN_KEY = "ROMAN";
+	public static final String ROMAN_STRING = "#,I,II,III,IV,V,VI,VII,VIII,IX,X";
+	public static final List<String> ROMAN_VALUES = Arrays.asList(ROMAN_STRING.split(","));
+
+	public static final String NUMERIC_KEY = "NUMERIC";
+
+	public static String getStartsWith(String type) {
+
+		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 2"))
+			return ALPHABET_KEY;
+
+		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 3"))
+			return ROMAN_KEY;
+
+		return NUMERIC_KEY;
+	}
+
+	public static Integer getWeight(String type) {
+		if (!type.isEmpty() && type.toUpperCase().contains("HEADING"))
+			return Integer.parseInt(type.toUpperCase()
+					.replaceAll("HEADING", "").trim());
+
+		return 1;
+	}
+
+	public static String getTabbing(String type) {
+
+		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 2"))
+			return "\t";
+
+		if (!type.isEmpty() && type.trim().equalsIgnoreCase("HEADING 3"))
+			return "\t\t";
+
+		return "";
+	}
 }

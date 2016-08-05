@@ -121,7 +121,7 @@ class DocumentParserEngine {
 		List<String> lines = this.readDocument();
 
 		for (String line : lines) {
-
+			this.getGeneratedTree();
 			if (line.isEmpty() || !line.toUpperCase().startsWith("HEADING"))
 				continue;
 
@@ -208,7 +208,7 @@ class DocumentParserEngine {
 	}
 
 	public void getGeneratedTree() {
-		System.out.print(new Gson().toJson(this.node));
+		System.out.println(new Gson().toJson(this.node));
 	}
 
 	public List<String> readDocument() throws IOException {

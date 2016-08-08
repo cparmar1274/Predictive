@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
@@ -22,13 +23,17 @@ public class Application extends WebMvcAutoConfigurationAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		
 		//templates
-		registry.addResourceHandler("/templates/**").addResourceLocations("classpath:resources/templates/");
+		registry.addResourceHandler("/resources/templates/**").addResourceLocations("/resources/templates/");
 		
 		//ui/ux libraries
-		registry.addResourceHandler("/angular/**").addResourceLocations("classpath:resources/node_modules/angular/");
-		registry.addResourceHandler("/bootstrap/**").addResourceLocations("classpath:resources/node_modules/bootstrap/");
-		registry.addResourceHandler("/jquery/**").addResourceLocations("classpath:resources/node_modules/jquery/");
-		
+		registry.addResourceHandler("/resources/node_modules/angular/**").addResourceLocations("/resources/node_modules/angular/");
+		registry.addResourceHandler("/resources/node_modules/bootstrap/**").addResourceLocations("/resources/node_modules/bootstrap/");
+		registry.addResourceHandler("/resources/node_modules/jquery/**").addResourceLocations("/resources/node_modules/jquery/");
 	}
+	
+	@Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
 }

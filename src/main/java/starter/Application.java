@@ -28,10 +28,10 @@ public class Application extends WebMvcAutoConfigurationAdapter {
 		//ui/ux libraries
 		registry.addResourceHandler("/resources/node_modules/angular/**").addResourceLocations("/resources/node_modules/angular/");
 		registry.addResourceHandler("/resources/node_modules/bootstrap/**").addResourceLocations("/resources/node_modules/bootstrap/");
-		registry.addResourceHandler("/resources/node_modules/jquery/**").addResourceLocations("/resources/node_modules/jquery/");
+		registry.addResourceHandler("/resources/node_modules/djquery/**").addResourceLocations("/resources/node_modules/jquery/");
 	}
 	
-	@Override
+	@Override 
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }

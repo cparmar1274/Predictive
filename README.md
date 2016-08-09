@@ -1,12 +1,12 @@
-# Predictive
-Mammoth Inc.
+# predictive
 
-Location Analytics Tool
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.15.1.
 
-1.Feeding Ads based on user location and its geographically learned romaing pattern
-2.Human Entity Tracking and Location Prediction
-3.Vehicle Tracking and Location Predicton
-4.Aviation Entity Tracking and Location Prediction
-5.Security and Keeping track of loved ones
-6.Keeping track of Transport Vehicle
-7.Keeping track of Rented Vehicle and Moving Properties
+## Build & development
+
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.

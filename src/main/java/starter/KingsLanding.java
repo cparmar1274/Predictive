@@ -31,7 +31,7 @@ import authentications.UserEngine;
  * @author chiragparmar, @date 24/05/16 10:40 AM
  */
 @Controller
-public class KingsLanding implements ErrorController{
+public class KingsLanding implements ErrorController {
 
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
@@ -42,15 +42,15 @@ public class KingsLanding implements ErrorController{
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
 	}
-	
-	@RequestMapping("/angular")
-	public String getAngularTest(Model model){
-		return "angular";
+
+	@RequestMapping("/analytics")
+	public String getAngularTest(Model model) {
+		return "analytics";
 	}
-	
+
 	@RequestMapping("/home")
 	public String getApplicationPage(Model model) {
-		
+
 		Address address = new Address();
 		address.setAptNo("2");
 		address.setStreetName("623 Windsor St");
@@ -59,10 +59,10 @@ public class KingsLanding implements ErrorController{
 		address.setState("NB");
 		address.setZipCode("E3B 4G3");
 		address.save(address);
-				
+
 		return "index";
 	}
-	
+
 	@RequestMapping("/profile")
 	public String getUsreProfile(Model model) {
 		return "user";
@@ -72,21 +72,20 @@ public class KingsLanding implements ErrorController{
 	public String getLandingPage(Model model) {
 		return "landing";
 	}
-	
+
 	@RequestMapping("/predict")
-	public String getPrerict(Model model){
+	public String getPrerict(Model model) {
 		return "predict";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
 	String goLogin(WebRequest request) {
-		
+
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String imageUrl = request.getParameter("imageUrl");
-		
-		
+
 		UserProfile userProfile = new UserProfile();
 		userProfile.setUserName(name);
 		userProfile.setUserId(UUID.randomUUID());
@@ -94,8 +93,7 @@ public class KingsLanding implements ErrorController{
 		userProfile.setImageUrl(imageUrl);
 		userProfile.setAddress(new Address());
 		userProfile.setUserMatrix(new UserMatrix());
-		
-		
+
 		return "Login Success for " + request.getParameter("name");
 	}
 
@@ -104,8 +102,6 @@ public class KingsLanding implements ErrorController{
 	String goLogout(WebRequest request) {
 		return "Logout success";
 	}
-	
-	
 
 	/* User Locations Prediction Service */
 	@RequestMapping(value = "/predict", method = RequestMethod.POST)
@@ -198,23 +194,21 @@ public class KingsLanding implements ErrorController{
 		}
 		return data;
 	}
-	
+
 	@RequestMapping(value = "/broadcast", method = RequestMethod.POST)
 	public @ResponseBody
 	String broadcastMyLocation(WebRequest request) {
-		
+
 		String lat = request.getParameter("lat");
 		String lon = request.getParameter("lon");
-		
-		//update your location to everyone else
-		
+
+		// update your location to everyone else
+
 		return "Broadcast successful.";
 	}
 
 	public String getErrorPath() {
 		return "error";
 	}
-
-	
 
 }

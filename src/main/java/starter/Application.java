@@ -21,19 +21,25 @@ public class Application extends WebMvcAutoConfigurationAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		
-		//templates
-		registry.addResourceHandler("/resources/templates/**").addResourceLocations("/resources/templates/");
-		
-		//ui/ux libraries
-		registry.addResourceHandler("/resources/node_modules/angular/**").addResourceLocations("/resources/node_modules/angular/");
-		registry.addResourceHandler("/resources/node_modules/bootstrap/**").addResourceLocations("/resources/node_modules/bootstrap/");
-		registry.addResourceHandler("/resources/node_modules/djquery/**").addResourceLocations("/resources/node_modules/jquery/");
+
+		// templates
+		registry.addResourceHandler("/resources/templates/**")
+				.addResourceLocations("/resources/templates/")
+				.addResourceLocations("classpath:/app/views/");
+
+		// ui/ux libraries
+		registry.addResourceHandler("/resources/node_modules/angular/**")
+				.addResourceLocations("/resources/node_modules/angular/");
+		registry.addResourceHandler("/resources/node_modules/bootstrap/**")
+				.addResourceLocations("/resources/node_modules/bootstrap/");
+		registry.addResourceHandler("/resources/node_modules/djquery/**")
+				.addResourceLocations("/resources/node_modules/jquery/");
 	}
-	
-	@Override 
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
+
+	@Override
+	public void configureDefaultServletHandling(
+			DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
 
 }

@@ -1,8 +1,10 @@
 {
-  "name": "predictive",
+  "name": "predictive-mammoth-inc",
   "version": "1.0.0",
-  "description": "Analytice Portal",
+  "description": "Mammoth Inc. Vencture - Analytics tools",
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/cparmar1274/Predictive.git"
   },
-  "author": "Chirag Parmar (chirag-parmar@live.com)",
+  "keywords": [
+    "Mammoth",
+    "Predictive",
+    "Analytics",
+    "Tools"
+  ],
+  "author": "Chirag Parmar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cparmar1274/Predictive/issues"

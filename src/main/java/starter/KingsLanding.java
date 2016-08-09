@@ -43,6 +43,11 @@ public class KingsLanding implements ErrorController{
 		this.analyticsEngine = analyticsEngine;
 	}
 	
+	@RequestMapping("/angular")
+	public String getAngularTest(Model model){
+		return "angular";
+	}
+	
 	@RequestMapping("/home")
 	public String getApplicationPage(Model model) {
 		

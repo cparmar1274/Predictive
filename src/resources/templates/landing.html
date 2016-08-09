@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mammoth Inc. - Location Analytics Tool</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="google-signin-client_id" content="410485773364-6hetnmeupu48i1879i67felgfsku4r67.apps.googleusercontent.com"/>
+	  <!-- Bootstrap Core CSS -->
+	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+	 
+	  <!-- Custom CSS -->
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-stylish-portfolio/1.0.4/css/stylish-portfolio.min.css" rel="stylesheet"/>
+	
+	  <!-- Custom Fonts -->
+	  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+ 
+   <!-- Header -->
+    <header id="topPage" class="header">
+		<div class="text-vertical-center">
+            <h1>Mammoth Inc.</h1>
+            <h3>Location Analytics Tool</h3>
+			<div class="panel panel-info">
+			   <div class="panel-body">
+			         <div class="col-md-8" >
+						    We dont want you to store anything on our platform.You can sign in using your google account. 
+			     	 </div>
+			     	 <div class="col-md-4 pull-left" >
+						    <div class="text-right g-signin2" data-onsuccess="onSignIn"></div>
+			     	 </div>
+
+			   </div>
+			</div>
+        </div>
+    </header>
+    
+
+  
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Mammoth Inc.</strong></h4>
+                    <p>Fredericton, New Brunswick <br/> Canada</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (506) 259-8307</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:chirag-parmar@live.com">chirag-parmar@live.com</a></li>
+                    </ul>
+                    <br/>
+                    
+                    <hr class="small"/>
+                    <p class="text-muted">Chirag Parmar Initiative.</p>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+	
+	<script src="https://apis.google.com/js/platform.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+    function onSignIn(googleUser) {
+    	  var profile = googleUser.getBasicProfile();
+    	  var data = {
+    			  "name":profile.getName(),
+    			  "email":profile.getEmail()
+    	  };
+    	  $.ajax({
+    		  type: "POST",
+    		  url: "/login",
+    		  data: data,
+    		  success: function(a,b){
+					window.location="/home";
+    		  }
+    		});
+    	}
+    </script>
+</body>
+</html>

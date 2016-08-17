@@ -26,9 +26,11 @@ repositories {
 dependencies {
     
     //spring boot jars
-    compile('org.springframework.boot:spring-boot-starter-cache')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework.boot:spring-boot-starter")
+	compile("org.springframework:spring-web")
+	compile("com.fasterxml.jackson.core:jackson-databind")
+	compile("org.springframework.boot:spring-boot-devtools")
 	
     //hibernate jars
     compile('org.hibernate:hibernate-entitymanager:4.1.3.Final')

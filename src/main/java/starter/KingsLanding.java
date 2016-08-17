@@ -43,11 +43,6 @@ public class KingsLanding implements ErrorController {
 		this.analyticsEngine = analyticsEngine;
 	}
 
-	@RequestMapping("/analytics")
-	public String getAngularTest(Model model) {
-		return "analytics";
-	}
-
 	@RequestMapping("/home")
 	public String getApplicationPage(Model model) {
 
@@ -198,13 +193,19 @@ public class KingsLanding implements ErrorController {
 	@RequestMapping(value = "/broadcast", method = RequestMethod.POST)
 	public @ResponseBody
 	String broadcastMyLocation(WebRequest request) {
-
 		String lat = request.getParameter("lat");
 		String lon = request.getParameter("lon");
-
 		// update your location to everyone else
+		getAttach(lat, lon);
 
 		return "Broadcast successful.";
+	}
+
+	public String getAttach(String lat, String lon) {
+		if (lat.toUpperCase().equalsIgnoreCase(lon))
+			return lat;
+		else
+			return lon;
 	}
 
 	public String getErrorPath() {

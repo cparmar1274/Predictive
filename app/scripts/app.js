@@ -24,6 +24,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/chirag', {
+        templateUrl: 'views/chirag.html',
+        controller: 'ChiragCtrl',
+        controllerAs: 'chirag'
+      })
       .otherwise({
         redirectTo: '/'
       });

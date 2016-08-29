@@ -1,0 +1,11 @@
+authentications/DBConnection.class
+interfaces/IAnalyticsEngine.class
+mannyobjects/UserMatrix.class
+starter/KingsLanding.class
+mannyobjects/UserProfile.class
+mannyobjects/Location.class
+starter/ApplicationLogin.class
+authentications/UserEngine.class
+analytics/AnalyticsEngine.class
+mannyobjects/Address.class
+interfaces/IUserEngine.class

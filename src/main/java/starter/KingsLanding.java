@@ -58,20 +58,16 @@ public class KingsLanding implements ErrorController {
 	public String getApplicationPage(Model model) {
 		return "bootstrap/index";
 	}
- 
+
 	@RequestMapping("/profile")
 	public String getUsreProfile(Model model) {
 		return "bootstrap/user";
 	}
 
 	@RequestMapping("/")
-	public String getLandingPage(Model model) {
-		try {
-			this.elasticClient.execute(new CreateIndex.Builder("user").build());
-			this.elasticClient.execute(new CreateIndex.Builder("location").build());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String getLandingPage(Model model) throws Exception {
+		this.elasticClient.execute(new CreateIndex.Builder("user").build());
+		this.elasticClient.execute(new CreateIndex.Builder("location").build());
 
 		return "landing";
 	}

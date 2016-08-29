@@ -58,7 +58,7 @@ public class KingsLanding implements ErrorController {
 	public String getApplicationPage(Model model) {
 		return "bootstrap/index";
 	}
-
+ 
 	@RequestMapping("/profile")
 	public String getUsreProfile(Model model) {
 		return "bootstrap/user";

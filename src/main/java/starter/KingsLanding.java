@@ -2,6 +2,8 @@ package starter;
 
 import interfaces.IAnalyticsEngine;
 import interfaces.IUserEngine;
+import io.searchbox.client.JestClient;
+import io.searchbox.indices.CreateIndex;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 import analytics.AnalyticsEngine;
+import authentications.ApplicationElasticConnector;
 import authentications.UserEngine;
 
 /*
@@ -35,11 +38,15 @@ public class KingsLanding implements ErrorController {
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
 
+	private JestClient elasticClient = null;
+
 	@Autowired(required = true)
-	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine) {
+	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine,
+			ApplicationElasticConnector elasticConnector) {
 		super();
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
+		this.elasticClient = elasticConnector.getObject();
 	}
 
 	@RequestMapping("/error")
@@ -59,6 +66,13 @@ public class KingsLanding implements ErrorController {
 
 	@RequestMapping("/")
 	public String getLandingPage(Model model) {
+		try {
+			this.elasticClient.execute(new CreateIndex.Builder("user").build());
+			this.elasticClient.execute(new CreateIndex.Builder("location").build());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return "landing";
 	}
 
@@ -183,7 +197,6 @@ public class KingsLanding implements ErrorController {
 		String lon = request.getParameter("lon");
 
 		// update your location to everyone else
-
 		return "Broadcast successful.";
 	}
 

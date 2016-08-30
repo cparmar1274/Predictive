@@ -11,8 +11,10 @@ import java.util.UUID;
 
 import mannyobjects.Address;
 import mannyobjects.Location;
+import mannyobjects.LogObject;
 import mannyobjects.UserProfile;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
@@ -37,16 +39,16 @@ public class KingsLanding implements ErrorController {
 
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
-
 	private JestClient elasticClient = null;
+	private Logger logger = null;
 
 	@Autowired(required = true)
-	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine,
-			ApplicationElasticConnector elasticConnector) {
+	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine,ApplicationElasticConnector elasticConnector) {
 		super();
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
 		this.elasticClient = elasticConnector.getObject();
+		this.logger = Logger.getLogger(KingsLanding.class);
 	}
 
 	@RequestMapping("/error")
@@ -65,14 +67,10 @@ public class KingsLanding implements ErrorController {
 	}
 
 	@RequestMapping("/")
-	public String getLandingPage(Model model) {
-		try {
-			this.elasticClient.execute(new CreateIndex.Builder("user").build());
-			this.elasticClient.execute(new CreateIndex.Builder("location").build());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	public String getLandingPage(Model model) throws Exception {
+		this.elasticClient.execute(new CreateIndex.Builder("user").build());
+		this.elasticClient.execute(new CreateIndex.Builder("location").build());
+		logger.info(LogObject.logDetails("Indexes cretaed for user and locations"));
 		return "landing";
 	}
 
@@ -88,7 +86,8 @@ public class KingsLanding implements ErrorController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String imageUrl = request.getParameter("imageUrl");
-		return "Login Success for " + request.getParameter("name");
+		logger.info(LogObject.logDetails("Logged In User Details",name,email,imageUrl));
+		return "Login Success for " +name+ request.getParameter("name");
 	}
 
 	@RequestMapping("/logout")

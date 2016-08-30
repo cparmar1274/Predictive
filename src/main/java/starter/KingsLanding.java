@@ -14,7 +14,6 @@ import mannyobjects.Location;
 import mannyobjects.LogObject;
 import mannyobjects.UserProfile;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
@@ -40,7 +39,7 @@ public class KingsLanding implements ErrorController {
 	private IUserEngine userEngine = null;
 	private IAnalyticsEngine analyticsEngine = null;
 	private JestClient elasticClient = null;
-	private Logger logger = null;
+	private LogObject logger = null;
 
 	@Autowired(required = true)
 	public KingsLanding(AnalyticsEngine analyticsEngine, UserEngine userEngine,ApplicationElasticConnector elasticConnector) {
@@ -48,7 +47,7 @@ public class KingsLanding implements ErrorController {
 		this.userEngine = userEngine;
 		this.analyticsEngine = analyticsEngine;
 		this.elasticClient = elasticConnector.getObject();
-		this.logger = Logger.getLogger(KingsLanding.class);
+		this.logger = new LogObject(this);
 	}
 
 	@RequestMapping("/error")
@@ -70,7 +69,7 @@ public class KingsLanding implements ErrorController {
 	public String getLandingPage(Model model) throws Exception {
 		this.elasticClient.execute(new CreateIndex.Builder("user").build());
 		this.elasticClient.execute(new CreateIndex.Builder("location").build());
-		logger.info(LogObject.logDetails("Indexes cretaed for user and locations"));
+		logger.logInfo("Indexes cretaed for user and locations");
 		return "landing";
 	}
 
@@ -86,7 +85,7 @@ public class KingsLanding implements ErrorController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String imageUrl = request.getParameter("imageUrl");
-		logger.info(LogObject.logDetails("Logged In User Details",name,email,imageUrl));
+		logger.logInfo("Logged In User Details",name,email,imageUrl);
 		return "Login Success for " +name+ request.getParameter("name");
 	}
 

@@ -14,6 +14,7 @@ import mannyobjects.Location;
 import mannyobjects.LogObject;
 import mannyobjects.UserProfile;
 
+import org.elasticsearch.common.lucene.search.Queries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
@@ -85,7 +86,7 @@ public class KingsLanding implements ErrorController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String imageUrl = request.getParameter("imageUrl");
-		logger.logInfo("Logged In User Details",name,email,imageUrl);
+		logger.logInfo("logged in user details",name,email,imageUrl);
 		return "Login Success for " +name+ request.getParameter("name");
 	}
 

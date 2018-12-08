@@ -68,21 +68,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
-    function onSignIn(googleUser) {
-    	  var profile = googleUser.getBasicProfile();
-    	  var data = {
-    			  "name":profile.getName(),
-    			  "email":profile.getEmail()
-    	  };
-    	  $.ajax({
-    		  type: "POST",
-    		  url: "/login",
-    		  data: data,
-    		  success: function(a,b){
-					window.location="/home";
-    		  }
-    		});
-    	}
+    window.location="/home";
     </script>
 </body>
 </html>
